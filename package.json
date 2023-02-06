@@ -9,18 +9,20 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mantine/rte": "^5.10.3",
     "@next/font": "13.1.6",
     "@sendgrid/mail": "^7.7.0",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
-    "jodit-react": "^1.3.33",
+    "formik": "^2.2.9",
     "mongoose": "^6.9.0",
     "multer": "^1.4.5-lts.1",
     "next": "13.1.6",
     "next-connect": "^0.13.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-portable-text": "^0.6.0"
+    "react-portable-text": "^0.6.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",

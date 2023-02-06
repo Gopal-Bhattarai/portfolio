@@ -7,7 +7,7 @@ const blogSchema = new Schema({
         required: true
     },
     category: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'category'
     },
     meta: {
@@ -27,7 +27,7 @@ const blogSchema = new Schema({
         type: Number
     },
     author: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'author'
     },
 }, {
