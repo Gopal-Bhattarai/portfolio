@@ -6,30 +6,42 @@ const candidateSchema = new Schema({
         type: String,
         required: true
     },
+
     profession: {
         type: String
     },
-    email1:{
-        type: String,
+
+    email:{
+        primary: {
+            type: String,
+        },
+        secondary: {
+            type: String, 
+        }
     },
-    email2:{
-        type: String,
+
+    phone: {
+        primary: {
+            type: String 
+        },
+        secondary: {
+            type: String, 
+        },
     },
-    phone1: {
-        type: Number,
+
+    address: {
+        Street: {
+            type: String,
+        },
+        City: {
+            type: String, 
+        },
     },
-    phone2: {
-        type: Number,
-    },
-    address1: {
-        type: String,
-    },
-    address2: {
-        type: String,
-    },
+    
     image: {
         type: String,
     },
+    
     description:{
         type: String,
     },
@@ -37,21 +49,26 @@ const candidateSchema = new Schema({
         type: Boolean,
         default: 1
     },
-    sociallink:[{
-        type: String,
-    }],
-    proficiency: [{
-        type: String,
-    }],
-    skills: [{
-        type: String,
-    }],
+    sociallink:{
+        type: Object 
+    },
+    proficiency: {
+        type: Object
+    },
+    skills: {
+        type: Object
+    },
     portfolio: [{
-        type: String,
+        type: Object,
     }],
-    clients: [{
-        type: String, 
-    }]
+    clients: {
+        current:[ {
+            type: Object
+        }],
+        past: [{
+            type: Object
+        }]
+    },
 }, {
     timestamps: true
 })

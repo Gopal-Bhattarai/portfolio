@@ -1,11 +1,11 @@
 import { initMongoose } from "@/lib/connectdb";
-import Blog from "@/model/blog";
+import Candidate from "@/model/candidate";
 import nextConnect from 'next-connect';
 import multer from 'multer';
 
 const upload = multer({
     storage: multer.diskStorage({
-      destination: './public/image',
+      destination: './public/candidate',
       filename: function (req, file, cb) {
         const newFileName = Math.floor(new Date().getTime()) + file.originalname;
         req.newfilename = newFileName
@@ -36,13 +36,16 @@ const upload = multer({
   
   apiRoute.post(async (req, res) => {
 
+  console.log('body',req.body)
+  // console.log('data', req.data)
+
     const image = req.newfilename
     await initMongoose();
-    const {title, meta, description} = req.body;
+    const {name, ...rest} = JSON.parse(req.body.data);
 
-    const newBlog = await Blog.create({ title, meta, description, image })
+    const newCandidate = await Candidate.create({name: name, image: image, ...rest})
 
-    res.status(201).json( newBlog  )
+    res.status(201).json( newCandidate  )
   });
   
   export default apiRoute;
@@ -52,4 +55,3 @@ const upload = multer({
       bodyParser: false, // Disallow body parsing, consume as stream
     },
   };
-

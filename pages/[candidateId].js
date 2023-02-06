@@ -15,13 +15,12 @@ import NavMenuSmallScreen from "@/components/NavMenuSmallScreen";
 import MyExClients from "@/components/MyExClients";
 import Alert from "@/components/Alert";
 
-export default function Home({blogs}) {
-
-
+export default function Home({ blogs, candidate  }) {
+    console.log(candidate)
   return (
     <>
       <HeadTag />
-      <Alert  />
+      <Alert />
 
       <div
         className="{ 'overflow-hidden max-h-screen': mobileMenu } relative"
@@ -39,39 +38,39 @@ export default function Home({blogs}) {
                   }
               }"
           >
-          <NavMenuLargeScreen />          
+            <NavMenuLargeScreen />
 
-          <NavMenuSmallScreen />  
+            <NavMenuSmallScreen />
 
             <div>
-              <HeroSection />
+              <HeroSection candidate={candidate} />
 
-              <WhoAmI />
+              <WhoAmI candidate={candidate} />
 
-              <WhatIAmGoodAt />
+              <WhatIAmGoodAt candidate={candidate} />
 
-              <PortFolioSection />
+              <PortFolioSection candidate={candidate} />
 
-              <MyClients />
-              <MyExClients />
+              <MyClients candidate={candidate} />
+              <MyExClients candidate={candidate} />
 
-              <WorkExperience />
+              <WorkExperience candidate={candidate} />
 
               <Statistics />
 
-              <BlogSection blogs={blogs} />
+              <BlogSection blogs={blogs} candidate={candidate} />
 
-              <ContactFormSection />
+              <ContactFormSection candidate={candidate} />
 
               <div
                 className="h-72 bg-cover bg-center bg-no-repeat sm:h-64 md:h-72 lg:h-96"
                 style={{ backgroundImage: "url(/assets/img/map.png)" }}
               ></div>
 
-              <JoinTheClubSection />
+              <JoinTheClubSection candidate={candidate} />
             </div>
 
-            <FooterSection />
+            <FooterSection candidate={candidate} />
           </div>
         </div>
       </div>
@@ -79,17 +78,23 @@ export default function Home({blogs}) {
   );
 }
 
-
 export async function getServerSideProps(context) {
+  const { candidateId } = context.query;
 
+  const candidate = await fetch(
+    `${process.env.HOST}/api/candidate/${candidateId}`
+  );
+  const result = await candidate.json();
 
 
   const response = await fetch(`${process.env.HOST}/api/blog?limit=3`);
   const blogs = await response.json();
 
+  console.log(result)
 
   return {
     props: {
+      candidate: result,
       blogs: blogs.blogs,
     },
   };
