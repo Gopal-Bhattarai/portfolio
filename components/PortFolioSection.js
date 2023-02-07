@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const PortFolioSection = () => {
+const PortFolioSection = ({candidate}) => {
   return (
     <div className="container py-16 md:py-20" id="portfolio">
       <h2 className="text-center font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl">
@@ -11,17 +11,21 @@ const PortFolioSection = () => {
       </h3>
 
       <div className="mx-auto grid w-full grid-cols-1 gap-8 pt-12 sm:w-3/4 md:gap-10 lg:w-full lg:grid-cols-2">
-        <Link
-          href="https://nsretails.com.np/"
+       { Object.entries(candidate.portfolio).map(([key, each])=>(
+
+         <Link
+         href={each.value} key={each.value}
           className="mx-auto transform transition-all hover:scale-105 md:mx-0"
-        >
+          >
           <img
-            src="/assets/img/portfolio-1.jpeg"
+            src={`/candidate/portfolio/${each.name}`}
             className="w-full shadow"
             alt="portfolio image"
-          />
+            />
         </Link>
-        <Link
+
+        ))}
+        {/* <Link
           href="https://nepalsami.com/"
           className="mx-auto transform transition-all hover:scale-105 md:mx-0"
         >
@@ -50,7 +54,7 @@ const PortFolioSection = () => {
             className="w-full shadow"
             alt="portfolio image"
           />
-        </a>
+        </a> */}
       </div>
     </div>
   );

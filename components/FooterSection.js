@@ -1,7 +1,7 @@
 import SocialLinks from "./SocialLinks"
 
 
-const FooterSection = () => {
+const FooterSection = ({candidate}) => {
   return (
     <div className="bg-primary">
   <div className="container flex flex-col justify-between py-6 sm:flex-row">
@@ -9,7 +9,7 @@ const FooterSection = () => {
       © Copyright 2023. All right reserved, GB.
     </p>
 
-    <SocialLinks textColor='text-white' />
+    <SocialLinks textColor='text-white' candidate={candidate} />
 
   </div>
 </div>

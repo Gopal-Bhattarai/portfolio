@@ -1,6 +1,6 @@
 import SocialLinks from "./SocialLinks"
 
-const WhoAmI = () => {
+const WhoAmI = ({candidate}) => {
   return (
     <div className="bg-grey-50" id="about">
   <div className="container flex flex-col items-center py-16 md:py-20 lg:flex-row">
@@ -13,10 +13,10 @@ const WhoAmI = () => {
       <h4
         className="pt-6 font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl"
       >
-        I'm Gopal Bhattarai, a Full Stack Web Developer 
+        I'm {candidate.name}, {candidate.profession}
       </h4>
       <p className="pt-6 font-body leading-relaxed text-grey-20">
-      Highly motivated and experienced full stack web developer with proven experience in developing and deploying web applications.  Strong ability to work both independently and as part of a team to deliver high-quality, scalable, and reliable web applications. Capable of continuous learning new tools & technologies. Experience in driving projects forward as the development team leader, facilitating projects from concept to launch.  Eager to tackle more complex problems and continue to find ways to maximize user efficiency. 
+      {candidate.description}
       </p>
       <div
         className="flex flex-col justify-center pt-6 sm:flex-row lg:justify-start"
@@ -29,22 +29,30 @@ const WhoAmI = () => {
             <i className="bx bx-chevron-right text-2xl text-primary"></i>
           </div>
         </div>
-        <SocialLinks />
+        <SocialLinks candidate={candidate} />
       </div>
     </div>
     <div className="w-full pl-0 pt-10 sm:w-3/4 lg:w-2/5 lg:pl-12 lg:pt-0">
-      <div>
+      
+      { Object.entries(candidate.proficiency).map(([key, record])=>(
+
+        
+        <div className="pt-6" key={key}>
         <div className="flex items-end justify-between">
           <h4 className="font-body font-semibold uppercase text-black">
-            HTML & CSS
+            { record.key }
           </h4>
-          <h3 className="font-body text-3xl font-bold text-primary">75%</h3>
+          <h3 className="font-body text-3xl font-bold text-primary">{record.value}%</h3>
         </div>
         <div className="mt-2 h-3 w-full rounded-full bg-lila">
-          <div className="h-3 rounded-full bg-primary" style={{width: "75%"}}></div>
+          <div className="h-3 rounded-full bg-primary" style={{width: `${record.value}%` }}></div>
         </div>
       </div>
-      <div className="pt-6">
+
+      ))
+      }
+
+      {/* <div className="pt-6">
         <div className="flex items-end justify-between">
           <h4 className="font-body font-semibold uppercase text-black">React.js</h4>
           <h3 className="font-body text-3xl font-bold text-primary">90%</h3>
@@ -72,7 +80,9 @@ const WhoAmI = () => {
         <div className="mt-2 h-3 w-full rounded-full bg-lila">
           <div className="h-3 rounded-full bg-primary" style={{width: "91%"}}></div>
         </div>
-      </div>
+      </div> */}
+
+
     </div>
   </div>
 </div>

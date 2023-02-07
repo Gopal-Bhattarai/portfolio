@@ -1,5 +1,5 @@
 
-const WorkExperience = () => {
+const WorkExperience = ({candidate}) => {
   return (
     <div className="container py-16 md:py-20" id="work">
   <h2
@@ -18,12 +18,14 @@ const WorkExperience = () => {
       className="left-2/5 absolute inset-y-0 ml-10 hidden w-0.5 bg-grey-40 md:block"
     ></span>
 
-    <div className="mt-8 flex flex-col text-center md:flex-row md:text-left">
+    { Object.entries(candidate.experiences).map(([key, each])=>(
+
+    <div key={key} className="mt-8 flex flex-col text-center md:flex-row md:text-left">
       <div className="md:w-2/5">
         <div className="flex justify-center md:justify-start">
-          <span className="shrink-0">
+          <span className="shrink-0">          
             <img
-              src="/assets/img/schwob.png"
+              src={`/candidate/experiences/${each.companyLogo}`}
               className="h-auto w-32"
               alt="company logo"
             />
@@ -45,15 +47,15 @@ const WorkExperience = () => {
             <i className="bx bxs-right-arrow hidden text-primary md:block"></i>
             <div className="md:-mt-1 md:pl-8">
               <span className="block font-body font-bold text-grey-40"
-                >Jan 2013 - Dec 2015</span
+                >{each.startDate} - {each.endDate}</span
               >
               <span
                 className="block pt-2 font-header text-xl font-bold uppercase text-primary"
-                >IT Manager</span
+                >{each.jobTitle}</span
               >
               <div className="pt-2">
                 <span className="block font-body text-black"
-                  >Managing IT team, overall network infrastructure, servers, databases & users</span
+                  >{each.jobDescription}</span
                 >
               </div>
             </div>
@@ -61,7 +63,12 @@ const WorkExperience = () => {
         </div>
       </div>
     </div>
-    <div className="mt-8 flex flex-col text-center md:flex-row md:text-left">
+
+    ))}
+
+
+
+    {/* <div className="mt-8 flex flex-col text-center md:flex-row md:text-left">
       <div className="md:w-2/5">
         <div className="flex justify-center md:justify-start">
           <span className="shrink-0">
@@ -189,7 +196,7 @@ const WorkExperience = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div> */}
   </div>
 </div>
   )

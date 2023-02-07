@@ -3,7 +3,9 @@ import {Spinner} from "./Spinner";
 import { AlertContext } from "./state/AlertContext";
 
 
-const ContactFormSection = ({state}) => {
+const ContactFormSection = ({state, candidate}) => {
+
+
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
@@ -98,10 +100,10 @@ const ContactFormSection = ({state}) => {
             </p>
           </div>
           <p className="pt-2 text-left font-body font-bold text-primary lg:text-lg">
-            (+977) 9843 891333
+            (+977) {candidate.phone.primary.substring(0,4)} {candidate.phone.primary.substring(4,10)}
           </p>
           <p className="pt-2 text-left font-body font-bold text-primary lg:text-lg">
-            (+977) 9803 996555
+            (+977) {candidate.phone.secondary.substring(0,4)} {candidate.phone.secondary.substring(4,10)}
           </p>
         </div>
         <div className="w-full border-l-2 border-t-0 border-r-2 border-b-2 border-grey-60 px-6 py-6 sm:py-8 lg:w-1/3 lg:border-l-0 lg:border-t-2">
@@ -112,10 +114,10 @@ const ContactFormSection = ({state}) => {
             </p>
           </div>
           <p className="pt-2 text-left font-body font-bold text-primary lg:text-lg">
-            bhattarai_g@hotmail.com
+            {candidate.email.primary}
           </p>
           <p className="pt-2 text-left font-body font-bold text-primary lg:text-lg">
-            gbhattarai55@gmail.com
+          {candidate.email.secondary}
           </p>
         </div>
         <div className="w-full border-l-2 border-t-0 border-r-2 border-b-2 border-grey-60 px-6 py-6 sm:py-8 lg:w-1/3 lg:border-l-0 lg:border-t-2">
@@ -126,10 +128,10 @@ const ContactFormSection = ({state}) => {
             </p>
           </div>
           <p className="pt-2 text-left font-body font-bold text-primary lg:text-lg">
-            127 Sangam Marg, Khumaltar
+            {candidate.address.street}
           </p>
           <p className="pt-2 text-left font-body font-bold text-primary lg:text-lg">
-            Lalitpur, Nepal
+            {candidate.address.city}
           </p>
         </div>
       </div>

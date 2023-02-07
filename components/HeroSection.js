@@ -1,6 +1,6 @@
 import SocialLinks from "./SocialLinks"
 
-const HeroSection = () => {
+const HeroSection = ({candidate}) => {
   return (
     <div
   className="relative bg-cover bg-center bg-no-repeat py-8"
@@ -16,7 +16,7 @@ const HeroSection = () => {
     <div className="flex flex-col items-center justify-center lg:flex-row">
       <div className="rounded-full border-8 border-primary shadow-xl">
         <img
-          src="/assets/img/pp2.png"
+          src={`/candidate/${candidate.image}`}
           className="h-48 rounded-full sm:h-56"
           alt="author"
         />
@@ -25,7 +25,7 @@ const HeroSection = () => {
         <h1
           className="text-center font-header text-4xl text-white sm:text-left sm:text-5xl md:text-6xl"
         >
-          Hello I'm Gopal Bhattarai!
+          Hello I'm {candidate.name}!
         </h1>
         <div
           className="flex flex-col justify-center pt-3 sm:flex-row sm:pt-5 lg:justify-start"
@@ -38,7 +38,7 @@ const HeroSection = () => {
               <i className="bx bx-chevron-right text-3xl text-yellow"></i>
             </div>
           </div>
-          <SocialLinks textColor='text-white' />
+          <SocialLinks textColor='text-white' candidate={candidate} />
         </div>
       </div>
     </div>

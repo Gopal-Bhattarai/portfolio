@@ -16,7 +16,6 @@ import MyExClients from "@/components/MyExClients";
 import Alert from "@/components/Alert";
 
 export default function Home({ blogs, candidate  }) {
-    console.log(candidate)
   return (
     <>
       <HeadTag />
