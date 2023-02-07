@@ -16,7 +16,7 @@ const PortFolioSection = () => {
           className="mx-auto transform transition-all hover:scale-105 md:mx-0"
         >
           <img
-            src="/assets/img/portfolio-apple.jpeg"
+            src="/assets/img/portfolio-1.jpeg"
             className="w-full shadow"
             alt="portfolio image"
           />
@@ -26,7 +26,7 @@ const PortFolioSection = () => {
           className="mx-auto transform transition-all hover:scale-105 md:mx-0"
         >
           <img
-            src="/assets/img/portfolio-stripe.jpeg"
+            src="/assets/img/portfolio-4.jpeg"
             className="w-full shadow"
             alt="portfolio image"
           />
@@ -36,7 +36,7 @@ const PortFolioSection = () => {
           className="mx-auto transform transition-all hover:scale-105 md:mx-0"
         >
           <img
-            src="/assets/img/portfolio-fedex.jpeg"
+            src="/assets/img/portfolio-2.jpeg"
             className="w-full shadow"
             alt="portfolio image"
           />
@@ -46,7 +46,7 @@ const PortFolioSection = () => {
           className="mx-auto transform transition-all hover:scale-105 md:mx-0"
         >
           <img
-            src="/assets/img/portfolio-microsoft.jpeg"
+            src="/assets/img/portfolio-3.jpeg"
             className="w-full shadow"
             alt="portfolio image"
           />

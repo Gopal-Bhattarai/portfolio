@@ -22,18 +22,18 @@ const candidateSchema = new Schema({
 
     phone: {
         primary: {
-            type: String 
+            type: String,
         },
         secondary: {
             type: String, 
-        },
+        }
     },
 
     address: {
-        Street: {
+        street: {
             type: String,
         },
-        City: {
+        city: {
             type: String, 
         },
     },
@@ -41,7 +41,7 @@ const candidateSchema = new Schema({
     image: {
         type: String,
     },
-    
+
     description:{
         type: String,
     },
@@ -50,25 +50,68 @@ const candidateSchema = new Schema({
         default: 1
     },
     sociallink:{
-        type: Object 
+        facebook: {
+            type: String,
+        },
+        instagram: {
+            type: String,
+        },
+        linkedin: {
+            type: String,
+        },
+        twitter: {
+            type: String,
+        },
+        github: {
+            type: String,
+        }
     },
     proficiency: {
-        type: Object
+        item1:{
+            key:{
+                type: String
+            },
+            value:{
+                type: String
+            },
+        },
+        item2:{
+            key:{
+                type: String
+            },
+            value:{
+                type: String
+            },
+        },
+        item3:{
+            key:{
+                type: String
+            },
+            value:{
+                type: String
+            },
+        },
+        item4:{
+            key:{
+                type: String
+            },
+            value:{
+                type: String
+            },
+        },
     },
     skills: {
         type: Object
     },
-    portfolio: [{
+    portfolio: {
         type: Object,
-    }],
-    clients: {
-        current:[ {
-            type: Object
-        }],
-        past: [{
-            type: Object
-        }]
     },
+    clients: {
+       type: Object,
+    },
+    experiences:{
+        type: Object
+    }
 }, {
     timestamps: true
 })
