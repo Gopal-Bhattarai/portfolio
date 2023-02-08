@@ -36,9 +36,6 @@ const upload = multer({
   
   apiRoute.post(async (req, res) => {
 
-  console.log('body',req.body)
-  // console.log('data', req.data)
-
     const image = req.newfilename
     await initMongoose();
     const {name, ...rest} = JSON.parse(req.body.data);

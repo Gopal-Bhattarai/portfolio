@@ -81,11 +81,9 @@ const newcandidate = () => {
 
     setFile(URL.createObjectURL(files.files[0]));
     setIsSending(false);
-    console.log(file);
   };
 
   const onSubmit = async (values) => {
-  console.log(values)
 
     const formData = new FormData();
     formData.append("image", image);

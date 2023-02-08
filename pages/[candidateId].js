@@ -89,7 +89,6 @@ export async function getServerSideProps(context) {
   const response = await fetch(`${process.env.HOST}/api/blog?limit=3`);
   const blogs = await response.json();
 
-  console.log(result)
 
   return {
     props: {
