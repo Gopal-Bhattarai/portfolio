@@ -18,7 +18,7 @@ const WorkExperience = ({candidate}) => {
       className="left-2/5 absolute inset-y-0 ml-10 hidden w-0.5 bg-grey-40 md:block"
     ></span>
 
-    { Object.entries(candidate.experiences).map(([key, each])=>(
+    { candidate.experiences && Object.entries(candidate.experiences).map(([key, each])=>(
 
     <div key={key} className="mt-8 flex flex-col text-center md:flex-row md:text-left">
       <div className="md:w-2/5">

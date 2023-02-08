@@ -100,10 +100,10 @@ const ContactFormSection = ({state, candidate}) => {
             </p>
           </div>
           <p className="pt-2 text-left font-body font-bold text-primary lg:text-lg">
-            (+977) {candidate.phone.primary.substring(0,4)} {candidate.phone.primary.substring(4,10)}
+            (+977) {candidate.phone && candidate.phone.primary.substring(0,4)} {candidate.phone && candidate.phone.primary.substring(4,10)}
           </p>
           <p className="pt-2 text-left font-body font-bold text-primary lg:text-lg">
-            (+977) {candidate.phone.secondary.substring(0,4)} {candidate.phone.secondary.substring(4,10)}
+            (+977) {candidate.phone && candidate.phone.secondary.substring(0,4)} {candidate.phone && candidate.phone.secondary.substring(4,10)}
           </p>
         </div>
         <div className="w-full border-l-2 border-t-0 border-r-2 border-b-2 border-grey-60 px-6 py-6 sm:py-8 lg:w-1/3 lg:border-l-0 lg:border-t-2">
@@ -114,10 +114,10 @@ const ContactFormSection = ({state, candidate}) => {
             </p>
           </div>
           <p className="pt-2 text-left font-body font-bold text-primary lg:text-lg">
-            {candidate.email.primary}
+            {candidate.email && candidate.email.primary}
           </p>
           <p className="pt-2 text-left font-body font-bold text-primary lg:text-lg">
-          {candidate.email.secondary}
+          {candidate.email && candidate.email.secondary}
           </p>
         </div>
         <div className="w-full border-l-2 border-t-0 border-r-2 border-b-2 border-grey-60 px-6 py-6 sm:py-8 lg:w-1/3 lg:border-l-0 lg:border-t-2">
@@ -128,10 +128,10 @@ const ContactFormSection = ({state, candidate}) => {
             </p>
           </div>
           <p className="pt-2 text-left font-body font-bold text-primary lg:text-lg">
-            {candidate.address.street}
+            {candidate.address && candidate.address.street}
           </p>
           <p className="pt-2 text-left font-body font-bold text-primary lg:text-lg">
-            {candidate.address.city}
+            {candidate.address && candidate.address.city}
           </p>
         </div>
       </div>

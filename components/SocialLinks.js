@@ -4,7 +4,7 @@ const SocialLinks = ({textColor='text-primary', candidate}) => {
   return (
     <div className="flex items-center justify-center pt-5 pl-2 sm:justify-start sm:pt-0">
       
-      { Object.entries(candidate.sociallink).map((key, index)=>(
+      {candidate.sociallink && Object.entries(candidate.sociallink).map((key, index)=>(
 
       <Link href={key[1]} key={index} className="pl-4">
         <i className={`bx bxl-${key[0]} text-2xl ${textColor} hover:text-yellow`}></i>

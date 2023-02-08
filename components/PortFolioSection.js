@@ -11,7 +11,7 @@ const PortFolioSection = ({candidate}) => {
       </h3>
 
       <div className="mx-auto grid w-full grid-cols-1 gap-8 pt-12 sm:w-3/4 md:gap-10 lg:w-full lg:grid-cols-2">
-       { Object.entries(candidate.portfolio).map(([key, each])=>(
+       { candidate.portfolio && Object.entries(candidate.portfolio).map(([key, each])=>(
 
          <Link
          href={each.value} key={each.value}
