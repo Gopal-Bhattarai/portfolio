@@ -57,24 +57,6 @@ const HeadSources = () => {
         rel="stylesheet"
       />
 
-      <script
-        defer
-        src="https://unpkg.com/@alpine-collective/toolkit@1.0.0/dist/cdn.min.js"
-      ></script>
-
-      <script
-        defer
-        src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
-      ></script>
-
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/atom-one-dark.min.css"
-      />
-
-      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
-
-      <script>hljs.highlightAll();</script>
     </>
   );
 };

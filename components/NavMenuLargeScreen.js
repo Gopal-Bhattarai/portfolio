@@ -5,13 +5,13 @@ const NavMenuLargeScreen = () => {
     <div className="w-full z-50 top-0 py-3 sm:py-5  absolute">
               <div className="container flex items-center justify-between">
                 <div>
-                  <a href="/">
+                  <Link href="/">
                     <img
                       src="/assets/img/whitelogo.png"
                       className="w-24 lg:w-48"
                       alt="logo image"
                     />
-                  </a>
+                  </Link>
                 </div>
                 <div className="hidden lg:block">
                   <ul className="flex items-center">

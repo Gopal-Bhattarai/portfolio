@@ -10,7 +10,7 @@ const WorkExperience = ({candidate}) => {
   <h3
     className="pt-6 text-center font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl"
   >
-    Here's what I did before web development
+    Here&apos;s what I did before web development
   </h3>
 
   <div className="relative mx-auto mt-12 flex w-full flex-col lg:w-2/3">

@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import PortableText from "react-portable-text";
 
 
@@ -16,7 +18,8 @@ const Post = ({ blog }) => {
               </h1>
               <div className="flex items-center pt-5 md:pt-10">
                 <div>
-                  <img
+                  <Image priority
+                    width="20" height="20"
                     src="/assets/img/blog-author.jpg"
                     className="h-20 w-20 rounded-full border-2 border-grey-70 shadow"
                     alt="author image"
@@ -58,21 +61,21 @@ const Post = ({ blog }) => {
                 Design
               </span>
             </div>
-            <div className="mt-10 flex justify-between border-t border-lila py-12">
-              <a href="/" className="flex items-center">
+            <div className="mt-10 flex justify-between border-t border-lilLink py-12">
+              <Link href="/" className="flex items-center">
                 <i className="bx bx-left-arrow-alt text-2xl text-primary"></i>
                 <span className="block pl-2 font-body text-lg font-bold uppercase text-primary md:pl-5">
                   Previous Post
                 </span>
-              </a>
-              <a href="/" className="flex items-center">
+              </Link>
+              <Link href="/" className="flex items-center">
                 <span className="block pr-2 font-body text-lg font-bold uppercase text-primary md:pr-5">
                   Next Post
                 </span>
                 <i className="bx bx-right-arrow-alt text-2xl text-primary"></i>
-              </a>
+              </Link>
             </div>
-            <div className="flex flex-col items-center border-t border-lila py-12 pt-12 md:flex-row md:items-start xl:pb-20">
+            <div className="flex flex-col items-center border-t border-lilLink py-12 pt-12 md:flex-row md:items-start xl:pb-20">
               <div className="w-3/4 sm:w-2/5 lg:w-1/4 xl:w-1/5">
                 <img
                   src="/assets/img/blog-author.jpg"
@@ -86,27 +89,27 @@ const Post = ({ blog }) => {
                 </h3>
                 <p className="pt-5 font-body text-lg leading-8 text-secondary sm:leading-9 md:text-xl md:leading-9 lg:leading-9 xl:leading-9">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  do eiusmod tempor incididunt ut labore et dolore magnLink aliqua.
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  laboris nisi ut aliquip ex eLink commodo consequat. Duis aute
                   irure dolor in reprehenderit in voluptate velit.
                 </p>
                 <div className="flex items-center justify-center pt-5 md:justify-start">
-                  <a href="/">
+                  <Link href="/">
                     <i className="bx bxl-facebook-square text-2xl text-primary hover:text-yellow"></i>
-                  </a>
-                  <a href="/" className="pl-4">
+                  </Link>
+                  <Link href="/" className="pl-4">
                     <i className="bx bxl-twitter text-2xl text-primary hover:text-yellow"></i>
-                  </a>
-                  <a href="/" className="pl-4">
+                  </Link>
+                  <Link href="/" className="pl-4">
                     <i className="bx bxl-dribbble text-2xl text-primary hover:text-yellow"></i>
-                  </a>
-                  <a href="/" className="pl-4">
+                  </Link>
+                  <Link href="/" className="pl-4">
                     <i className="bx bxl-linkedin text-2xl text-primary hover:text-yellow"></i>
-                  </a>
-                  <a href="/" className="pl-4">
+                  </Link>
+                  <Link href="/" className="pl-4">
                     <i className="bx bxl-instagram text-2xl text-primary hover:text-yellow"></i>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

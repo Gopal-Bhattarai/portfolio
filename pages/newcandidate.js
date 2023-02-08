@@ -58,7 +58,7 @@ const validationSchema = Yup.object({
 const labelcss = " w-48 ";
 const controlcss = "w-full md:w-1/2 m-2 px-2";
 
-const newcandidate = () => {
+const NewCandidate = () => {
   const { setAlertValue } = useContext(AlertContext);
 
   const [showSecondEmail, setShowSecondEmail] = useState("hidden");
@@ -676,4 +676,4 @@ const newcandidate = () => {
   );
 };
 
-export default newcandidate;
+export default NewCandidate;

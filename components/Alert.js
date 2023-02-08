@@ -9,6 +9,7 @@ const Alert = () => {
         setTimeout(()=>{
           setAlertValue((e)=>({...e, open: 'hidden'}))
         },alertValue.timeout)
+        //react-hooks/exhaustive-deps
     },[alertValue.open])
 
   return (

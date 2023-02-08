@@ -1,6 +1,7 @@
 import RichText from "@/components/RichText";
 import { Spinner } from "@/components/Spinner";
 import { AlertContext } from "@/components/state/AlertContext";
+import Image from "next/image";
 import { useContext, useRef, useState } from "react";
 
 const NewBlog = () => {
@@ -105,7 +106,7 @@ const NewBlog = () => {
             />
           </div>
 
-          <div className="w-500">
+          <div className="w-500" rel="preload" as="image">
             <input
               className="mt-3"
               type="file"
@@ -116,8 +117,14 @@ const NewBlog = () => {
               hidden
               onChange={handleChange}
             />
-            <img
+            <Image
+              priority
+              rel="preload"
+              as="image"
               className="rounded-xl shadow-lg my-4 lg:w-[200px] w-[100px]"
+              width="200"
+              height="200"
+              alt="upload"
               src={file}
               onClick={handlePictureClick}
             />

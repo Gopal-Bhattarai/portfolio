@@ -13,7 +13,7 @@ const WhoAmI = ({candidate}) => {
       <h4
         className="pt-6 font-header text-xl font-medium text-black sm:text-2xl lg:text-3xl"
       >
-        I'm {candidate.name}, {candidate.profession}
+        I&apos;m {candidate.name}, {candidate.profession}
       </h4>
       <p className="pt-6 font-body leading-relaxed text-grey-20">
       {candidate.description}

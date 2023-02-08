@@ -7,7 +7,7 @@ const JoinTheClubSection = () => {
       <div className="container relative z-30">
         <h3 className="text-center font-header text-3xl uppercase leading-tight tracking-wide text-white sm:text-4xl lg:text-5xl">
           Keep <span className="font-bold">up-to-date</span> <br />
-          with what I'm up to
+          with what I&apos;m up to
         </h3>
         <form className="mt-6 flex flex-col justify-center sm:flex-row">
           <input
