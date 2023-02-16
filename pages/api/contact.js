@@ -7,8 +7,8 @@ export default async function handler(req, res){
     const newEmail = req.body;
     console.log(newEmail)
     await sgMail.send({
-        to: 'gbhattarai55@gmail.com',
-        from: 'gbhattarai55@gmail.com',
+        to: 'contact@gopalbhattarai.com.np',
+        from: 'contact@gopalbhattarai.com.np',
         subject: newEmail.name,
         text: newEmail.email + '\n\n' + newEmail.message
     })

@@ -9,7 +9,7 @@ const MyExClients = ({ candidate }) => {
           <div className="flex flex-wrap items-center justify-center pt-4 sm:pt-4">
             {candidate.clients && Object.entries(candidate.clients).map(([key, record], index) => (
               <div key={index}>
-                {record.current == 0 ? (
+                {record.current == "0" ? (
                   <>
                     <span className="mx-8 mt-8 block">
                       <img

@@ -21,57 +21,38 @@ export default function Home({ blogs, candidate  }) {
       <HeadTag />
       <Alert />
 
-      <div
-        className="{ 'overflow-hidden max-h-screen': mobileMenu } relative"
-        x-data="{ mobileMenu: false }"
-      >
-        <div id="main" className="relative">
+      <div id="main" className="relative">
+        <NavMenuLargeScreen />
+
+        <div>
+          <HeroSection candidate={candidate} />
+
+          <WhoAmI candidate={candidate} />
+
+          <WhatIAmGoodAt candidate={candidate} />
+
+          <PortFolioSection candidate={candidate} />
+
+          <MyClients candidate={candidate} />
+          <MyExClients candidate={candidate} />
+
+          <WorkExperience candidate={candidate} />
+
+          <Statistics />
+
+          {/* <BlogSection blogs={blogs} candidate={candidate} /> */}
+
+          <ContactFormSection candidate={candidate} />
+
           <div
-            x-data="{
-                  triggerNavItem(id) {
-                      $scroll(id)
-                  },
-                  triggerMobileNavItem(id) {
-                      mobileMenu = false;
-                      this.triggerNavItem(id)
-                  }
-              }"
-          >
-            <NavMenuLargeScreen />
+            className="h-72 bg-cover bg-center bg-no-repeat sm:h-64 md:h-72 lg:h-96"
+            style={{ backgroundImage: "url(/assets/img/map.png)" }}
+          ></div>
 
-            <NavMenuSmallScreen />
-
-            <div>
-              <HeroSection candidate={candidate} />
-
-              <WhoAmI candidate={candidate} />
-
-              <WhatIAmGoodAt candidate={candidate} />
-
-              <PortFolioSection candidate={candidate} />
-
-              <MyClients candidate={candidate} />
-              <MyExClients candidate={candidate} />
-
-              <WorkExperience candidate={candidate} />
-
-              <Statistics />
-
-              <BlogSection blogs={blogs} candidate={candidate} />
-
-              <ContactFormSection candidate={candidate} />
-
-              <div
-                className="h-72 bg-cover bg-center bg-no-repeat sm:h-64 md:h-72 lg:h-96"
-                style={{ backgroundImage: "url(/assets/img/map.png)" }}
-              ></div>
-
-              <JoinTheClubSection candidate={candidate} />
-            </div>
-
-            <FooterSection candidate={candidate} />
-          </div>
+          <JoinTheClubSection candidate={candidate} />
         </div>
+
+        <FooterSection candidate={candidate} />
       </div>
     </>
   );

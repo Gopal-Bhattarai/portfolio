@@ -79,7 +79,7 @@ const SkillsInfo = ({ userId, setPage }) => {
           const { key, value } = data;
           return (
             <div key={i} className="flex lg:flex-row flex-col justify-between">
-              <div className="lg:mx-8 mx-2 lg:w-96 w-auto my-1">
+              <div className="lg:mx-8 mx-2 lg:w-96 w-auto lg:my-4 my-1">
                 <input
                   className="lg:w-80 w-80"
                   type="text"
@@ -90,7 +90,7 @@ const SkillsInfo = ({ userId, setPage }) => {
                 />
               </div>
 
-              <div className="lg:mx-8 mx-2 lg:w-96 w-auto my-1">
+              <div className="lg:mx-8 mx-2 lg:w-96 w-auto lg:my-4 my-1">
                 <input
                   className="lg:w-96 w-80"
                   type="text"
@@ -100,14 +100,14 @@ const SkillsInfo = ({ userId, setPage }) => {
                   onChange={(e) => handleChange(e, i)}
                 />
               </div>
-              <div>
+              <div className="lg:mx-8 mx-2 lg:w-96 w-auto lg:my-4 my-1">
                 {(skills.length!==1)? 
                         <div className="flex mx-2 justify-center items-center relative">
                             <button
                             onClick={removeInputField}
                             className="bg-transparent hover:bg-orange-500 text-orange-700 font-semibold hover:text-white py-1 px-2 border border-orange-500 text-center inline-flex items-center hover:border-transparent rounded "
                             >
-                            x
+                            X
                             </button>
                     </div>
                 :''}

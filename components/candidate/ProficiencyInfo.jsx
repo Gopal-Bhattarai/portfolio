@@ -1,176 +1,124 @@
 import React, { useContext, useState } from "react";
 import { AlertContext } from "../state/AlertContext";
 
-const ProficiencyInfo = ({userId, setPage}) => {
+const ProficiencyInfo = ({ userId, setPage }) => {
+  const { setAlertValue } = useContext(AlertContext);
+  const [proficiency, setProficiency] = useState([{ key: "", value: "" }]);
 
-    const {setAlertValue} = useContext(AlertContext)
+  const addInputField = () => {
+    setProficiency([
+      ...proficiency,
+      {
+        key: "",
+        value: "",
+      },
+    ]);
+  };
 
-    const [proficiency, setProficiency] = useState({
-        item1: {
-            key: '',
-            value: '',
-        },
-        item2: {
-            key: '',
-            value: '',
-        },
-        item3: {
-            key: '',
-            value: '',
-        },
-        item4: {
-            key: '',
-            value: '',
-        },
-    })
+  const removeInputField = (index) => {
+    const rows = [...proficiency];
+    rows.splice(index, 1);
+    setProficiency(rows);
+  };
 
-    const handleNextClick = async (e) => {
-        e.preventDefault();
-    
-        try {
-          const response = await fetch(`/api/editcandidate/${userId}`, {
-            method: "POST",
-            headers: {
-              'Content-Type' : 'application/json'
-            },
-            body: JSON.stringify({proficiency}),
-          });
-          const json = await response.json();
-    
-          setPage();
-          setAlertValue((e) => ({
-            ...e,
-            open: "block",
-            title: "SENT",
-            message: "Process Started",
-            color: "text-purple-600",
-          }));
-        } catch (error) {
-          setAlertValue((e) => ({
-            ...e,
-            open: "block",
-            title: "Sorry",
-            message: "Server Error !",
-            color: "text-red-600",
-          }));
-        }
-      };
+  const handleChange = (e, i) => {
+    const { name, value } = e.target;
+    const list = [...proficiency];
+    list[i][name] = value;
+    setProficiency(list);
+  };
+
+  const handleNextClick = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(`/api/editcandidate/${userId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ proficiency }),
+      });
+      const json = await response.json();
+
+      setPage();
+      setAlertValue((e) => ({
+        ...e,
+        open: "block",
+        title: "SENT",
+        message: "Process Started",
+        color: "text-purple-600",
+      }));
+    } catch (error) {
+      setAlertValue((e) => ({
+        ...e,
+        open: "block",
+        title: "Sorry",
+        message: "Server Error !",
+        color: "text-red-600",
+      }));
+    }
+  };
 
   return (
-    <div>
-      <div className={`flex w-2/3 justify-end items-center relative`}>
-        <div className="w-48">
-          <label>1. Proficiency Key</label>
+    <div className="flex justify-center items-center  ">
+      <div>
+        <div className="flex justify-center items-center relative border-b-2 mb-4 pb-3 border-stone-400 ">
+          <p className="text-5xl"> Your proficiency</p>
         </div>
-        <input
-          className="w-full md:w-1/2 m-2 px-2"
-          type="text"
-          name="proficiency.item1.key"
-          placeholder="Proficiency subject"
-          value={proficiency.item1.key}
-          onChange={(e)=>setProficiency(p=>({...p, item1: ({...p.item1, key: e.target.value})}))}
-        />
-      </div>
-
-      <div className={`flex w-2/3 justify-end items-center relative`}>
-        <div className="w-48">
-          <label>1. Proficiency Values</label>
+        <div className="flex flex-row justify-around border-b-2 mb-2 border-solid border-stone-100">
+            <div className="lg:block  ">
+                  <label className="lg:text-xl text-xs"> Title</label>
+            </div>
+            <div className="lg:block  ">
+                  <label className="lg:text-xl text-xs"> Description</label>
+            </div>
         </div>
-        <input
-          className="w-full md:w-1/2 m-2 px-2"
-          type="text"
-          name="proficiency.item1.value"
-          placeholder="Proficiency Value (0-100)"
-          value={proficiency.item1.value}
-          onChange={(e)=>setProficiency(p=>({...p, item1: ({...p.item1, value: e.target.value})}))}
-        />
-      </div>
+        {proficiency.map((data, i) => {
+          const { key, value } = data;
+          return (
+            <div key={i} className="flex lg:flex-row flex-col justify-between">
+              <div className="lg:mx-8 mx-2 lg:w-96 w-auto lg:my-4 my-1">
+                <input
+                  className="lg:w-80 w-80"
+                  type="text"
+                  name="key"
+                  placeholder="Title (e.g Javascript)"
+                  value={key}
+                  onChange={(e) => handleChange(e, i)}
+                />
+              </div>
 
-      <div className={`flex w-2/3 justify-end items-center relative`}>
-        <div className="w-48">
-          <label>2. Proficiency Key</label>
+              <div className="lg:mx-8 mx-2 lg:w-96 w-auto lg:my-4 my-1">
+                <input
+                  className="lg:w-96 w-80"
+                  type="text"
+                  name="value"
+                  placeholder="Description (e.g 99)"
+                  value={value}
+                  onChange={(e) => handleChange(e, i)}
+                />
+              </div>
+              <div className="lg:mx-8 mx-2 lg:w-96 w-auto lg:my-4 my-1">
+                {(proficiency.length!==1)? 
+                        <div className="flex mx-2 justify-center items-center relative">
+                            <button
+                            onClick={removeInputField}
+                            className="bg-transparent hover:bg-orange-500 text-orange-700 font-semibold hover:text-white py-1 px-2 border border-orange-500 text-center inline-flex items-center hover:border-transparent rounded "
+                            >
+                            X
+                            </button>
+                    </div>
+                :''}
+              </div>
+            </div>
+          );
+        })}
+        <div className={`flex justify-center items-center relative mt-4  `}>
+          <button className="border-2 border-violet-300 hover:bg-violet-300 hover:text-white py-1 px-4 rounded" onClick={addInputField}>Add more proficiency</button>
         </div>
-        <input
-          className="w-full md:w-1/2 m-2 px-2"
-          type="text"
-          name="proficiency.item2.key"
-          placeholder="Proficiency subject"
-          value={proficiency.item2.key}
-          onChange={(e)=>setProficiency(p=>({...p, item2: ({...p.item2, key: e.target.value})}))}
-        />
-      </div>
 
-      <div className={`flex w-2/3 justify-end items-center relative`}>
-        <div className="w-48">
-          <label>2. Proficiency Values</label>
-        </div>
-        <input
-          className="w-full md:w-1/2 m-2 px-2"
-          type="text"
-          name="proficiency.item2.value"
-          placeholder="Proficiency Value (0-100)"
-          value={proficiency.item2.value}
-          onChange={(e)=>setProficiency(p=>({...p, item2: ({...p.item2, value: e.target.value})}))}
-        />
-      </div>
-
-      <div className={`flex w-2/3 justify-end items-center relative`}>
-        <div className="w-48">
-          <label>3. Proficiency Key</label>
-        </div>
-        <input
-          className="w-full md:w-1/2 m-2 px-2"
-          type="text"
-          name="proficiency.item3.key"
-          placeholder="Proficiency subject"
-          value={proficiency.item3.key}
-          onChange={(e)=>setProficiency(p=>({...p, item3: ({...p.item3, key: e.target.value})}))}
-        />
-      </div>
-
-      <div className={`flex w-2/3 justify-end items-center relative`}>
-        <div className="w-48">
-          <label>3. Proficiency Values</label>
-        </div>
-        <input
-          className="w-full md:w-1/2 m-2 px-2"
-          type="text"
-          name="proficiency.item3.value"
-          placeholder="Proficiency Value (0-100)"
-          value={proficiency.item3.value}
-          onChange={(e)=>setProficiency(p=>({...p, item3: ({...p.item3, value: e.target.value})}))}
-        />
-      </div>
-
-      <div className={`flex w-2/3 justify-end items-center relative`}>
-        <div className="w-48">
-          <label>4. Proficiency Key</label>
-        </div>
-        <input
-          className="w-full md:w-1/2 m-2 px-2"
-          type="text"
-          name="proficiency.item4.key"
-          placeholder="Proficiency subject"
-          value={proficiency.item4.key}
-          onChange={(e)=>setProficiency(p=>({...p, item4: ({...p.item4, key: e.target.value})}))}
-        />
-      </div>
-
-      <div className={`flex w-2/3 justify-end items-center relative`}>
-        <div className="w-48">
-          <label>4. Proficiency Values</label>
-        </div>
-        <input
-          className="w-full md:w-1/2 m-2 px-2"
-          type="text"
-          name="proficiency.item4.value"
-          placeholder="Proficiency Value (0-100)"
-          value={proficiency.item4.value}
-          onChange={(e)=>setProficiency(p=>({...p, item4: ({...p.item4, value: e.target.value})}))}
-        />
-      </div>
-
-      <div className="w-2/3 flex justify-end items-center relative">
+        <div className=" mt-10 flex justify-end items-center relative">
         <button
           onClick={handleNextClick}
           className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 text-center inline-flex items-center hover:border-transparent rounded"
@@ -191,6 +139,8 @@ const ProficiencyInfo = ({userId, setPage}) => {
           </svg>
         </button>
       </div>
+      </div>
+
     </div>
   );
 };
